@@ -6,5 +6,6 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8010:8010
 
+ENV ENVIRONMENT=production
 
 CMD ["python", "main.py"]

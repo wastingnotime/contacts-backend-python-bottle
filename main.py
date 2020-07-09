@@ -1,8 +1,16 @@
 import json
+import os
 import uuid
 
 from bottle import request, response, run, HTTPResponse
 from bottle import post, get, put, delete
+from dotenv import load_dotenv
+
+# configuration --------------
+load_dotenv()
+
+# ENVIRONMENT=development
+environment = os.getenv("ENVIRONMENT")
 
 _contacts = [
     {'Id': str(uuid.uuid4()), 'FirstName': "Albert", 'LastName': "Einstein", 'PhoneNumber': "2222-1111"},
@@ -95,6 +103,6 @@ def find_contact(id):
 
 
 if __name__ == '__main__':
-    # todo: debug=True, reloader=True not suitable to production
-    run(host='0.0.0.0', port=8010, debug=True, reloader=True)
+    debug = environment == 'development'
+    run(host='0.0.0.0', port=8010, debug=debug, reloader=debug)
 

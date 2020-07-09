@@ -18,7 +18,7 @@ _contacts = [
 ]
 
 
-@post('/')
+@post('/contacts')
 def create_contact():
     """Creates a contact"""
     try:
@@ -43,7 +43,7 @@ def create_contact():
         response.status = 400
 
 
-@get('/')
+@get('/contacts')
 def get_all_contacts():
     """Gets all contacts"""
     response.headers['Content-Type'] = 'application/json'
@@ -51,7 +51,7 @@ def get_all_contacts():
     return json.dumps(_contacts)
 
 
-@get('/<id>')
+@get('/contacts/<id>')
 def get_contact(id):
     """Gets a specific contact"""
     _, contact = find_contact(id)
@@ -63,7 +63,7 @@ def get_contact(id):
     return json.dumps(contact)
 
 
-@put('/<id>')
+@put('/contacts/<id>')
 def update_contact(id):
     """Updates a contact"""
     i, _ = find_contact(id)
@@ -84,7 +84,7 @@ def update_contact(id):
         response.status = 400
 
 
-@delete('/<id>')
+@delete('/contacts/<id>')
 def delete_contact(id):
     """Deletes a contact"""
     i, contact = find_contact(id)

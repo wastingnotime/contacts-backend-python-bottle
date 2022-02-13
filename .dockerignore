@@ -8,9 +8,6 @@
 # py dev
 venv
 
-# caches
-__pycache__
-
 # dev config
 .env
 
